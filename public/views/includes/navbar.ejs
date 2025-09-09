@@ -1,0 +1,148 @@
+<style>
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand i {
+    color: #007bff;
+    margin-right: 0.5rem;
+  }
+
+  .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #007bff !important;
+  }
+
+  .btn-add-listing {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn-add-listing:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+  }
+
+  .user-actions .nav-link {
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+  }
+
+  /* Navbar Search Styles */
+  .navbar .input-group .form-control {
+    background: white;
+    border-color: #e9ecef;
+    color: #333;
+  }
+
+  .navbar .input-group .form-control:focus {
+    background: white;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.1);
+  }
+
+  .navbar .input-group .form-control::placeholder {
+    color: #6c757d;
+  }
+
+  .navbar .btn-outline-primary {
+    background: white;
+    border-color: #e9ecef;
+    color: #007bff;
+  }
+
+  .navbar .btn-outline-primary:hover {
+    background: #007bff;
+    border-color: #007bff;
+    color: white;
+  }
+
+  /* Responsive navbar search */
+  @media (max-width: 991.98px) {
+    .navbar .d-flex.me-3 {
+      margin: 1rem 0 !important;
+      max-width: 100% !important;
+    }
+
+    .navbar .input-group {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .navbar-brand {
+      font-size: 1.1rem;
+    }
+
+    .btn-add-listing {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/listings">
+      <i class="fas fa-home"></i>AThotel
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          
+        </li>
+      </ul>
+
+      <!-- Search Form in Navbar -->
+      <form method="GET" action="/listings" class="d-flex me-3" style="max-width: 300px;">
+        <div class="input-group">
+          <input type="text" name="search" class="form-control border-end-0" placeholder="Search destinations..." value="<%= typeof search !== 'undefined' ? search : '' %>" style="border-radius: 25px 0 0 25px; border: 2px solid #e9ecef;">
+          <button type="submit" class="btn btn-outline-primary border-start-0" style="border-radius: 0 25px 25px 0; border: 2px solid #e9ecef; border-left: none;">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+
+      <div class="d-flex align-items-center">
+        <% if(currUser){%>
+          <a href="/listings/new" class="btn btn-add-listing me-3">
+            <i class="fas fa-plus me-1"></i>Add Listing
+          </a>
+        <%}%>
+
+        <div class="user-actions navbar-nav">
+          <% if(!currUser){%>
+            <a class="nav-link" href="/signup">
+              <i class="fas fa-user-plus me-1"></i>Sign up
+            </a>
+            <a class="nav-link" href="/login">
+              <i class="fas fa-sign-in-alt me-1"></i>Login
+            </a>
+          <%} else {%>
+            <span class="navbar-text me-3">
+              <i class="fas fa-user me-1"></i>Welcome, <%= currUser.username %>
+            </span>
+            <a class="nav-link" href="/logout">
+              <i class="fas fa-sign-out-alt me-1"></i>Logout
+            </a>
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

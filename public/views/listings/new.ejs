@@ -1,0 +1,77 @@
+<% layout("/layouts/boilerplate") %>
+<div class="container-fluid py-5 fade-in">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-header bg-primary text-white text-center py-4 rounded-top-4">
+          <h1 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Create a New Listing</h1>
+        </div>
+        <div class="card-body p-5">
+          <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+
+            <div class="mb-4">
+              <label for="title" class="form-label fw-bold"><i class="fas fa-heading me-2"></i>Title</label>
+              <input id="title" name="listing[title]" placeholder="Enter an attractive title" type="text" class="form-control form-control-lg" required />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+
+            <div class="mb-4">
+              <label for="description" class="form-label fw-bold"><i class="fas fa-align-left me-2"></i>Description</label>
+              <textarea id="description" name="listing[description]" class="form-control" rows="4" placeholder="Describe your listing..." required></textarea>
+            </div>
+
+            <div class="mb-4">
+              <label for="image" class="form-label fw-bold"><i class="fas fa-image me-2"></i>Upload Image</label>
+              <input id="image" name="listing[image]" type="file" class="form-control" accept="image/*" required />
+            </div>
+
+            <div class="row">
+              <div class="mb-4 col-md-6">
+                <label for="price" class="form-label fw-bold"><i class="fas fa-rupee-sign me-2"></i>Price per night</label>
+                <div class="input-group">
+                  <span class="input-group-text">₹</span>
+                  <input id="price" name="listing[price]" placeholder="0" type="number" class="form-control" required />
+                </div>
+              </div>
+
+              <div class="mb-4 col-md-6">
+                <label for="country" class="form-label fw-bold"><i class="fas fa-globe me-2"></i>Country</label>
+                <input id="country" name="listing[country]" placeholder="Enter country" type="text" class="form-control" required />
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <label for="location" class="form-label fw-bold"><i class="fas fa-map-marker-alt me-2"></i>Location</label>
+              <input id="location" name="listing[location]" placeholder="Enter specific location" type="text" class="form-control" required />
+            </div>
+
+            <div class="mb-4">
+              <label for="category" class="form-label fw-bold"><i class="fas fa-tags me-2"></i>Category</label>
+              <select id="category" name="listing[category]" class="form-control form-control-lg" required>
+                <option value="">Select a category</option>
+                <option value="trending">🔥 Trending</option>
+                <option value="rooms">🏠 Rooms</option>
+                <option value="cities">🏙️ Cities</option>
+                <option value="mountains">🏔️ Mountains</option>
+                <option value="castles">🏰 Castles</option>
+                <option value="pool">🏊 Pool</option>
+                <option value="camping">⛺ Camping</option>
+                <option value="farms">🚜 Farms</option>
+                <option value="doms">🏔️ Doms</option>
+                <option value="boats">🚤 Boats</option>
+              </select>
+            </div>
+
+            <div class="d-grid">
+              <button class="btn btn-primary btn-lg py-3" type="submit">
+                <i class="fas fa-plus-circle me-2"></i>Create Listing
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
