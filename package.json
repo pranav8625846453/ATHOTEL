@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node":"v23.5.0"
+    "node":"24.x"
   },
   "name": "airnb",
   "version": "1.0.0",
